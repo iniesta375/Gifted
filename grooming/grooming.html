@@ -8,36 +8,44 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         :root {
-            --ph-gold: #D4A053;
-            --ph-cream: #FFFDD0;
-            --ph-black: #000000;
-        }
-        .bg-ph-cream { background-color: var(--ph-cream); }
-        .text-ph-gold { color: var(--ph-gold); }
-        .btn-ph-gold {
-            background-color: var(--ph-gold);
-            color: var(--ph-black);
-            border: none;
-            transition: all 0.3s ease;
-        }
-        .btn-ph-gold:hover { 
-            background-color: #e19e3a;
-            transform: scale(1.05);
-        }
-        .section-padding { padding: 4rem 0; }
-        .package-card {
-            border: 1px solid #ccc;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        .package-card:hover {
-            border-color: var(--ph-gold);
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-        }
-        .most-popular {
-            border: 3px solid var(--ph-gold);
-            background-color: rgba(255, 215, 0, 0.05); 
-        }
+    --ph-gold: #2d9596;
+    --ph-cream: #ecf4d6;
+    --ph-black: #265073;
+    --ph-light-hover: #9ad0c2;
+}
+.bg-ph-cream { 
+    background-color: var(--ph-cream); 
+}
+.text-ph-gold { 
+    color: var(--ph-gold); 
+}
+.btn-ph-gold {
+    background-color: var(--ph-gold);
+    color: white; 
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-ph-gold:hover { 
+    background-color: var(--ph-light-hover);
+    transform: scale(1.05);
+    color: var(--ph-black); 
+}
+.section-padding { 
+    padding: 4rem 0; 
+}
+.package-card {
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.package-card:hover {
+    border-color: var(--ph-gold);
+    box-shadow: 0 4px 15px rgba(45, 149, 150, 0.3);
+}
+.most-popular {
+    border: 3px solid var(--ph-gold);
+    background-color: rgba(45, 149, 150, 0.05); 
+}
     </style>
 </head>
 <body>

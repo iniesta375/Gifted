@@ -1,17 +1,13 @@
 :root {
-    /* Colors */
-    --gold: #D4A053;
-    --gold-light: #efac48;
-    --cream-bg: #F5F3EF;
-    --nav-text: #111;
-    --brand-text: #1E1E1E;
-    --section-cream: #ffd1e3;
+    --gold: #2d9596;
+    --gold-light: #9ad0c2;
+    --cream-bg: #ecf4d6;
+    --nav-text: #265073;
+    --brand-text: #265073;
+    --section-cream: #ecf4d6;
+    --gold-btn: #2d9596;
+    --gold-btn-hover: #9ad0c2;
 
-    /* Button & card colors */
-    --gold-btn: #D4A053;
-    --gold-btn-hover: #efac48;
-
-    /* Layout */
     --transition: 0.3s ease;
     --font-main: "Poppins", sans-serif;
 }
@@ -29,15 +25,157 @@ body {
     scroll-behavior: smooth;
 }
 
+.navbar .nav-link {
+    color: var(--nav-text);
+}
+
+.navbar .navbar-brand h4 {
+    color: var(--brand-text);
+}
+
+.gold-btn {
+    background-color: var(--gold-btn);
+    color: #fff;
+    transition: background var(--transition);
+}
+
+.gold-btn:hover {
+    background-color: var(--gold-btn-hover);
+}
+
+.secondContainer {
+    display: flex;
+    gap: 30px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+}
+
+.secondContainer h4,
+.secondContainer p {
+    text-align: center;
+}
+
+.green,
+.orange,
+.purple,
+.pink {
+    background-color: var(--gold) !important;
+}
+
+.bg-ph-cream {
+    background-color: var(--section-cream);
+}
+
+.text-ph-gold {
+    color: var(--gold);
+}
+
+.btn-ph-gold {
+    background-color: var(--gold-btn);
+    color: #fff;
+    border: none;
+    transition: all var(--transition);
+}
+
+.btn-ph-gold:hover {
+    background-color: var(--gold-btn-hover);
+    transform: scale(1.05);
+    color: #fff;
+}
+
+
+.section-padding {
+    padding: 4rem 0;
+}
+
+.card-hover:hover {
+    border: 2px solid var(--gold);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.hero {
+    background-color: var(--brand-text);
+    color: #fff;
+}
+
+.gold-text {
+    color: var(--gold);
+}
+
+#fifth {
+    background-color: var(--gold);
+}
+
+#fifth .butn {
+    color: var(--brand-text);
+}
+
+#fifth h1 {
+    color: var(--brand-text);
+}
+
+.foot {
+    background-color: var(--brand-text);
+}
+
+.foot h1,
+.foot h2,
+.foot a,
+.foot p {
+    color: var(--cream-bg) !important;
+}
+
+.foot a:hover {
+    color: var(--gold) !important;
+}
+
+.icon-circle {
+    background-color: var(--gold-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.d-flex .p-4 .p-md-5 {
+    background-color: var(--gold);
+}
+
+.col-12 .col-md-6 .ps-md-5 .text-center .text-md-start .mb-4[style*="background-color"] {
+    background-color: var(--gold);
+}
+
+.img-box {
+    background-color: var(--brand-text) !important;
+    color: var(--cream-bg);
+}
+
+.shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    background-color: var(--brand-text);
+    border: 1px solid var(--gold-light);
+}
+
+.hero-img {
+    max-width: 100%;
+}
+
+.read:hover{
+    transform: scaleX(1.01);
+    background-color: #151515;
+}
+
+.charcoal-bg {
+    background-color: var(--brand-text);
+}
+
 .navbar {
     background-color: white;
     position: sticky;
     top: 0;
     z-index: 1;
-}
-
-.navbar .nav-link {
-    color: var(--nav-text);
 }
 
 .navbar .navbar-brand h4 {
@@ -101,13 +239,8 @@ body {
 }
 
 .card-hover:hover {
-    border: 2px solid #D4A053;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-}
-
-#fifth {
-    background-color: #D4A053;
 }
 
 #fifth .butn {
@@ -129,9 +262,7 @@ body {
     color: #F5F3EF !important;
 }
 
-.foot a:hover {
-    color: #D4A053 !important;
-}
+
 
 @keyframes bounce {
 
@@ -192,18 +323,13 @@ body {
 }
 
 .hero {
-    background-color: #1E1E1E;
     color: #fff;
 }
 
 .hero-title {
     font-size: 3rem;
     font-weight: 700;
-}
-
-.gold-text {
-    color: #D4A053;
-}
+} 
 
 .hero-sub {
     opacity: 0.85;
@@ -247,7 +373,6 @@ body {
 .icon-circle {
     width: 70px;
     height: 70px;
-    background-color: #C8B079;
     border-radius: 50%;
     display: flex;
     align-items: center;

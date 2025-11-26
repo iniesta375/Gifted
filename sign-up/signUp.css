@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --gold: #D4A053;
   --gold-light: #C8B079;
   --charcoal: #1E1E1E;
@@ -57,4 +57,81 @@ input:focus {
   box-shadow: 0 0 8px rgba(212,160,83,0.5) !important;
   border-color: var(--gold) !important;
   transition: .3s ease;
+} */
+
+:root {
+    /* 🌟 NEW COLOR PALETTE 🌟 */
+    --gold: #2d9596;              /* Deep Teal/Aqua (Primary Accent) */
+    --gold-light: #9ad0c2;        /* Softer Aqua (Hover Tone) */
+    --charcoal: #265073;          /* Deep Navy Blue (Replacing old charcoal/text-dark) */
+    --cream: #ecf4d6;             /* Pale Green (Page Background) */
+    --text-dark: #265073;         /* Deep Navy Blue (Primary Text) */
+}
+
+body {
+    /* Updated: Uses new pale green background */
+    background-color: var(--cream);
+    font-family: "Poppins", sans-serif;
+    /* Updated: Ensures all body text uses the Navy Blue color */
+    color: var(--text-dark);
+}
+
+.signup-wrapper {
+    /* Updated: Uses new pale green background */
+    background-color: var(--cream);
+}
+
+.signup-card {
+    width: 100%;
+    max-width: 400px;
+    background: white; /* Remains white for high contrast */
+    border-radius: 12px;
+}
+
+/* ------------------------------ */
+/* BUTTONS & LINKS */
+/* ------------------------------ */
+.gold-btn {
+    /* Updated: Uses Deep Teal/Aqua for button background */
+    background-color: var(--gold);
+    color: white;
+    border: none;
+    transition: background 0.3s;
+}
+
+.gold-btn:hover {
+    /* Updated: Uses Softer Aqua for hover state */
+    background-color: var(--gold-light);
+}
+
+.gold-text {
+    /* Updated: Uses Deep Teal/Aqua for link text */
+    color: var(--gold);
+    font-weight: 600;
+}
+
+/* ------------------------------ */
+/* INPUT FOCUS EFFECT */
+/* ------------------------------ */
+input:focus {
+    /* Updated: Uses Deep Teal/Aqua color for shadow */
+    box-shadow: 0 0 8px rgba(45, 149, 150, 0.5) !important;
+    /* Updated: Uses Deep Teal/Aqua for border color */
+    border-color: var(--gold) !important;
+    transition: .3s ease;
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(.85);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.signup-card {
+    animation: zoomIn .8s ease-out;
 }
