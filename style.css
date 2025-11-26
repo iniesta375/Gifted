@@ -1,0 +1,275 @@
+:root {
+    /* Colors */
+    --gold: #D4A053;
+    --gold-light: #efac48;
+    --cream-bg: #F5F3EF;
+    --nav-text: #111;
+    --brand-text: #1E1E1E;
+    --section-cream: #ffd1e3;
+
+    /* Button & card colors */
+    --gold-btn: #D4A053;
+    --gold-btn-hover: #efac48;
+
+    /* Layout */
+    --transition: 0.3s ease;
+    --font-main: "Poppins", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cream-bg);
+    color: var(--nav-text);
+    font-family: var(--font-main);
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.navbar .nav-link {
+    color: var(--nav-text);
+}
+
+.navbar .navbar-brand h4 {
+    color: var(--brand-text);
+}
+
+.gold-btn {
+    background-color: var(--gold-btn);
+    color: #fff;
+    transition: background var(--transition);
+}
+
+.gold-btn:hover {
+    background-color: var(--gold-light);
+}
+
+.secondContainer {
+    display: flex;
+    gap: 30px;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+}
+
+.secondContainer h4,
+.secondContainer p {
+    text-align: center;
+}
+
+.green,
+.orange,
+.purple,
+.pink {
+    background-color: var(--gold) !important;
+}
+
+.bg-ph-cream {
+    background-color: var(--section-cream);
+}
+
+.text-ph-gold {
+    color: var(--gold);
+}
+
+.btn-ph-gold {
+    background-color: var(--gold-btn);
+    color: #fff;
+    border: none;
+    transition: all var(--transition);
+}
+
+.btn-ph-gold:hover {
+    background-color: var(--gold-btn-hover);
+    transform: scale(1.05);
+    color: #fff;
+}
+
+
+.section-padding {
+    padding: 4rem 0;
+}
+
+.card-hover:hover {
+    border: 2px solid #D4A053;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#fifth {
+    background-color: #D4A053;
+}
+
+#fifth .butn {
+    color: #1E1E1E;
+}
+
+#fifth h1 {
+    color: #1E1E1E;
+}
+
+.foot {
+    background-color: #1E1E1E;
+}
+
+.foot h1,
+.foot h2,
+.foot a,
+.foot p {
+    color: #F5F3EF !important;
+}
+
+.foot a:hover {
+    color: #D4A053 !important;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.bounce {
+    animation: bounce 1.5s infinite;
+}
+
+.img-box {
+    background-color: #1E1E1E !important;
+    color: #F5F3EF;
+}
+
+.shadow {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    background-color: #2A2A2A;
+    border: 1px solid #3b3b3b;
+}
+
+.green {
+    width: 4vw;
+    height: 4vw;
+    transition: 0.3s ease-in;
+}
+
+.orange {
+    width: 4vw;
+    height: 4vw;
+    transition: 0.3s ease-in;
+}
+
+.purple {
+    width: 4vw;
+    height: 4vw;
+    transition: 0.3s ease-in;
+}
+
+.pink {
+    width: 4vw;
+    height: 4vw;
+    transition: 0.3s ease-in;
+}
+
+.hero {
+    background-color: #1E1E1E;
+    color: #fff;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.gold-text {
+    color: #D4A053;
+}
+
+.hero-sub {
+    opacity: 0.85;
+}
+
+@keyframes fadeLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-left {
+    animation: fadeLeft 1.2s ease forwards;
+}
+
+
+.hero-img {
+    max-width: 100%;
+}
+
+.service-card{
+    transition: 0.3s ease-in;
+}
+
+.read:hover{
+    transform: scaleX(1.01);
+    background-color: #151515;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    transform: translateY(-6px);
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background-color: #C8B079;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.charcoal-bg {
+    background-color: #1E1E1E;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up {
+    animation: fadeUp 1s ease forwards;
+}

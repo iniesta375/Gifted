@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boarding Services - Pet Haven</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --ph-gold: #D4A053;
+            --ph-cream: #FFFDD0;
+            --ph-black: #000000;
+        }
+        .bg-ph-cream { background-color: var(--ph-cream); }
+        .text-ph-gold { color: var(--ph-gold); }
+        .btn-ph-gold {
+            background-color: var(--ph-gold);
+            color: var(--ph-black);
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .btn-ph-gold:hover { 
+            background-color: #efac48;
+            transform: scale(1.05);
+        }
+        .section-padding { padding: 4rem 0; }
+        .suite-card {
+            border-left: 5px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .suite-card:hover {
+            border-left: 5px solid var(--ph-gold);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--ph-black);">
+        <div class="container">
+            <a class="navbar-brand text-ph-gold fw-bold" href="../index.html">Gifted Pets</a>
+            </div>
+    </nav>
+
+    <header class="py-5 text-center bg-dark text-white" style="background-image: url('boarding-facility-placeholder.jpg'); background-size: cover; background-position: center; height: 50vh; display: flex; align-items: center;">
+        <div class="container bg-black bg-opacity-50 p-4 rounded-3">
+            <h1 class="display-4 fw-bold text-ph-gold">Your Pet's Home Away From Home</h1>
+            <p class="lead mb-4">Luxury boarding suites and constant care from trained staff.</p>
+            <a href="#suites" class="btn btn-ph-gold btn-lg">Explore Our Suites</a>
+        </div>
+    </header>
+
+    <section class="section-padding bg-ph-cream" id="suites">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold text-ph-gold">Select the Perfect Suite</h2>
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="card suite-card h-100 p-3 bg-white">
+                        <div class="card-body">
+                            <h3 class="card-title text-dark">Standard Comfort</h3>
+                            <span class="badge bg-secondary mb-3">Affordable & Cozy</span>
+                            <p class="fs-4 fw-bold">$45<small class="text-muted fw-light">/night</small></p>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check-lg text-success me-2"></i> Individual kennel space</li>
+                                <li><i class="bi bi-check-lg text-success me-2"></i> 2 Daily Group Play Sessions</li>
+                                <li><i class="bi bi-check-lg text-success me-2"></i> Premium bedding & bowls</li>
+                                <li class="text-muted"><i class="bi bi-x-lg text-danger me-2"></i> Private webcam access</li>
+                            </ul>
+                            <a href="#booking-form-boarding" class="btn btn-outline-dark w-100 mt-3">Book Standard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card suite-card h-100 p-3 bg-white most-popular">
+                        <div class="card-body">
+                            <h3 class="card-title text-dark">Deluxe Haven</h3>
+                            <span class="badge bg-ph-gold text-black mb-3 fw-bold">Best Value</span>
+                            <p class="fs-4 fw-bold text-ph-gold">$65<small class="text-muted fw-light">/night</small></p>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check-lg text-success me-2"></i> **Spacious, private room**</li>
+                                <li><i class="bi bi-check-lg text-success me-2"></i> **3 Daily Play Sessions**</li>
+                                <li><i class="bi bi-check-lg text-success me-2"></i> Premium bedding & bowls</li>
+                                <li><i class="bi bi-check-lg text-success me-2"></i> Daily Photo/Video Update</li>
+                            </ul>
+                            <a href="#booking-form-boarding" class="btn btn-ph-gold w-100 mt-3 btn-lg">Book Deluxe</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card suite-card h-100 p-3 bg-white">
+                        <div class="card-body">
+                            <h3 class="card-title text-dark">VIP Platinum</h3>
+                            <span class="badge bg-dark mb-3">Ultimate Luxury</span>
+                            <p class="fs-4 fw-bold text-ph-gold">$90<small class="text-muted fw-light">/night</small></p>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check-lg text-success me-2"></i> **Oversized private suite**</li>
+                                <li><i class="bi bi-check-lg text-success me-2"></i> **Private Webcam Access**</li>
+                                <li><i class="bi bi-check-lg text-success me-2"></i> Custom feeding schedule</li>
+                                <li><i class="bi bi-check-lg text-success me-2"></i> Complimentary bedtime snack</li>
+                            </ul>
+                            <a href="#booking-form-boarding" class="btn btn-outline-dark w-100 mt-3">Book VIP</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <section class="section-padding bg-white">
+        <div class="container">
+            <h2 class="text-center mb-4 fw-bold">A Day in the Haven</h2>
+            <p class="text-center mb-5">Our structured routine ensures your pet stays happy and comfortable.</p>
+            
+            <div class="table-responsive mx-auto" style="max-width: 900px;">
+                <table class="table table-striped table-bordered text-center">
+                    <thead class="bg-ph-cream">
+                        <tr>
+                            <th>Time</th>
+                            <th>Activity</th>
+                            <th>Focus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold">6:00 AM</td>
+                            <td>Morning Potty Break & Breakfast</td>
+                            <td>Health & Hydration</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-ph-gold">9:00 AM - 11:00 AM</td>
+                            <td class="fw-bold text-ph-gold">Group Play / Individual Walk</td>
+                            <td>Exercise & Socialization</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">1:00 PM</td>
+                            <td>Quiet Time & Treats</td>
+                            <td>Rest & Digestion</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-ph-gold">4:00 PM - 6:00 PM</td>
+                            <td class="fw-bold text-ph-gold">Evening Play Session & Dinner</td>
+                            <td>Fun & Nourishment</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">9:00 PM</td>
+                            <td>Final Potty Break & Bedtime</td>
+                            <td>Security & Comfort</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-dark text-white" id="booking-form-boarding">
+        <div class="container text-center">
+            <h2 class="mb-4 text-ph-gold fw-bold">Secure Your Boarding Dates</h2>
+            <p class="mb-4">Enter your planned stay dates to check suite availability and pricing.</p>
+            
+            <form class="row justify-content-center g-3">
+                <div class="col-md-3">
+                    <label class="form-label visually-hidden">Check-in</label>
+                    <input type="date" class="form-control" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label visually-hidden">Check-out</label>
+                    <input type="date" class="form-control" required>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" required>
+                        <option selected disabled>Select Suite Type...</option>
+                        <option value="1">Standard Comfort</option>
+                        <option value="2">Deluxe Haven</option>
+                        <option value="3">VIP Platinum</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-ph-gold w-100">Check Dates</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="text-white py-4" style="background-color: var(--ph-black);">
+        </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

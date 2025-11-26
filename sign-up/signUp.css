@@ -1,0 +1,60 @@
+:root {
+  --gold: #D4A053;
+  --gold-light: #C8B079;
+  --charcoal: #1E1E1E;
+  --cream: #F5F3EF;
+  --text-dark: #111;
+}
+
+body {
+  background-color: var(--cream);
+  font-family: "Poppins", sans-serif;
+}
+
+.signup-wrapper {
+  background-color: var(--cream);
+}
+
+.signup-card {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  border-radius: 12px;
+}
+
+.gold-btn {
+  background-color: var(--gold);
+  color: white;
+  border: none;
+  transition: background 0.3s;
+}
+
+.gold-btn:hover {
+  background-color: var(--gold-light);
+}
+
+.gold-text {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(.85);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.signup-card {
+  animation: zoomIn .8s ease-out;
+}
+
+input:focus {
+  box-shadow: 0 0 8px rgba(212,160,83,0.5) !important;
+  border-color: var(--gold) !important;
+  transition: .3s ease;
+}
