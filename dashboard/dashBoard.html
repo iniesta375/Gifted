@@ -43,9 +43,9 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--ph-black);">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--ph-black); top: 0; position: sticky; z-index: 1;">
         <div class="container-fluid">
-            <a class="navbar-brand text-ph-gold fw-bold" href="../index.html">Gifted Pets</a>
+            <a class="navbar-brand text-ph-gold fw-bold text-white" href="../index.html">Gifted Pets</a>
             <button class="btn btn-ph-gold d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
                 Menu
             </button>
@@ -89,6 +89,7 @@
             <main class="col-lg-9 col-xl-10 ms-sm-auto px-md-4">
                 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <span id="show2" class="d-block d-lg-none text-ph-gold text-center"></span>
                     <h1 class="h2">Dashboard Overview</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <button type="button" class="btn btn-sm btn-ph-gold">
@@ -141,8 +142,8 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody id="show3">
+                            <!-- <tr>
                                 <td>Boarding</td>
                                 <td>Dec 24 - Dec 28</td>
                                 <td>Luna (Cat)</td>
@@ -155,7 +156,7 @@
                                 <td>Max (Dog)</td>
                                 <td><span class="badge bg-warning text-dark">Pending Payment</span></td>
                                 <td><a href="#" class="btn btn-sm btn-ph-gold">Pay Now</a></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
@@ -163,13 +164,13 @@
                 <h2 class="h4 mt-5 mb-3 text-ph-gold">Recommendations for Max</h2>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
-                        <div class="card h-100">
+                        <!-- <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">Dog Toys & Chews</h5>
                                 <p class="card-text small">Max needs new durable toys for training rewards!</p>
                                 <a href="#" class="btn btn-sm btn-outline-dark">Shop Now</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col">
                         <div class="card h-100">
