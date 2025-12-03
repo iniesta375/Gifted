@@ -25,3 +25,21 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebas
       .catch((error) => { });
   };
   window.signOuted = signOuted;
+
+  const overView = () => {
+    window.location.href = "dashBoard.html"
+  }
+  window.overView = overView
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log(user);
+      show.innerHTML += `
+                        <h5>Welcome, ${user.displayName}</h5>
+                        `;
+    } else {
+      setTimeout(() => {
+        window.location.href = "../index.html";
+      }, 1000);
+    }
+  });
