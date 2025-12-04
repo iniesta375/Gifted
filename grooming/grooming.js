@@ -1,5 +1,4 @@
 let groomTime = [];
-// const date = document.getElementById('date')
 
 const findTime = (e) => {
   e.preventDefault();
@@ -11,11 +10,7 @@ const findTime = (e) => {
       sevice: service.value,
     };
     groomTime.push(groomObj);
-    // console.log(groomObj);
-    // console.log(groomTime);
-
     localStorage.setItem('time', JSON.stringify(groomTime))
-    // if()
   }
 
 console.log(date.value);

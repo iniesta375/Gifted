@@ -15,20 +15,22 @@ const firebaseConfig = {
 };
 
 let groomTime = JSON.parse(localStorage.getItem("time")) || [];
-if (localStorage.groomTime) {
+if (groomTime) {
   displayService();
 } else {
   // groomTime = "";
 
 }
 
-const displayService = () => {
+function displayService() {
     groomTime.forEach((services) => {
       show3.innerHTML += `
       <tr>
         <td>${services.sevice}</td>
         <td>${services.dat}</td>
         <td>Luna</td>
+        <td><span class="badge bg-warning text-dark">Pending Payment</span></td>
+        <td><a href="#" class="btn btn-sm btn-outline-danger">Cancel</a></td>
       </tr>
     `;
     });

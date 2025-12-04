@@ -52,13 +52,86 @@
             </div>
     </nav>
 
-    <header class="py-5 text-center bg-dark text-white" style="background-image: url('boarding-facility-placeholder.jpg'); background-size: cover; background-position: center; height: 50vh; display: flex; align-items: center;">
+    <header class="py-5 text-center bg-dark text-white" style="background-image: url('../img/pawpalace_boarding\ \(1\).jpg'); background-size: contain; background-position: center; height: 50vh; display: flex; align-items: center;">
         <div class="container bg-black bg-opacity-50 p-4 rounded-3">
             <h1 class="display-4 fw-bold text-ph-gold">Your Pet's Home Away From Home</h1>
             <p class="lead mb-4">Luxury boarding suites and constant care from trained staff.</p>
             <a href="#suites" class="btn btn-ph-gold btn-lg">Explore Our Suites</a>
         </div>
     </header>
+
+<section class="section-padding bg-white">
+    <div class="container">
+        
+        <div class="d-flex flex-column flex-md-row align-items-center bg-white p-4 p-md-5 rounded-4 shadow-lg">
+            
+            <div class="col-12 col-md-6 mb-4 mb-md-0 text-center text-md-start pe-md-5">
+                <h2 class="display-6 fw-bold mb-3" style="color: var(--ph-black);">Come visit the paw palace kennels</h2>
+                
+                <div class="mb-4" style="width: 80px; height: 3px; background-color: var(--ph-gold); margin-left: auto; margin-right: auto; margin-bottom: 25px;"></div>
+                
+                <p class="mb-4" style="color: var(--ph-black);">
+                    Paw Palace's trusted dog boarding service helps dog owners to ensure that their beloved pooches are well-cared for while dog owners are away on holidays, on business trips or for any other reason. Our dog boarding services include an impressive facility and dedicated and caring staff members who provide canines with the love, food, exercise and socialization that they need in order to be happy and healthy.
+                </p>
+
+                <p class="mb-4" style="color: var(--ph-black);">
+                    It goes without saying that visiting a dog boarding facility is the best way to know whether or not it meets your needs. When you tour the Paw Palace dog hotel, you'll experience our entertaining amenities, witness the exceptional cleanliness of our property and see how we provide the happiness/healthiness quotient required for your dog's wellbeing. If it's not possible to visit us, please call us today and one of our loving dog care takers will help you with any questions you may have.
+                </p>
+
+                <a href="tel:07061763947" class="btn btn-ph-gold btn-lg mt-3 fw-bold">Call Us to Book a Tour</a>
+
+            </div>
+            
+            <div class="col-12 col-md-6 text-center text-md-end">
+                <div class="p-3 border border-2 rounded-3" style="border-color: var(--ph-light-hover); background-color: var(--ph-cream);">
+                    <img src="../img/boarding-1.jpg" class="img-fluid rounded-2" alt="Long hallway of clean, professional dog kennels" style="max-height: 450px; object-fit: cover;">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+    <section class="section-padding bg-white">
+    <div class="container">
+        
+        <div class="d-flex flex-column flex-md-row align-items-center bg-white p-4 p-md-5 rounded-4 shadow-lg">
+            
+            <div class="col-12 col-md-5 mb-4 mb-md-0 text-center text-md-start">
+                <div class="p-3 border border-2 rounded-3" style="border-color: var(--ph-light-hover); background-color: var(--ph-cream);">
+                    <img src="../img/procedures.jpg" class="img-fluid rounded-2" alt="A bulldog puppy with glasses studying on books" style="max-height: 400px; object-fit: cover;">
+                </div>
+            </div>
+
+            <div class="col-12 col-md-7 ps-md-5 text-center text-md-start">
+                <h2 class="display-6 fw-bold mb-3" style="color: var(--ph-black);">Boarding Procedures</h2>
+                
+                <div class="mb-4" style="width: 80px; height: 3px; background-color: var(--ph-gold); margin-left: auto; margin-right: auto; margin-bottom: 25px;"></div>
+                
+                <h4 class="fw-bold fs-5" style="color: var(--ph-black);">Pickup and Drop Off Times</h4>
+                <p class="mb-4" style="color: var(--ph-black);">
+                    Dogs scheduled to go home, **must be picked up** between the hours of **8:00AM–12:00PM on Monday–Saturday**. If dogs are not picked up by 12:00PM there will be a **$20 late pickup charge** assessed for the 12:00–5:00PM slot. If the dogs are picked up between 5:00–7:00PM that night, an additional **$20.00** late fee will be added to the daycare fee.
+                </p>
+
+                <h4 class="fw-bold fs-5" style="color: var(--ph-black);">Drop Offs</h4>
+                <p class="mb-4" style="color: var(--ph-black);">
+                    Boarding dogs arriving have a drop off time between the hours of **12:00–5:00PM Monday–Friday** and **Saturday 12:00–3:00PM**. If your dog needs to be dropped off before 12PM there will be an **early $20 check-in fee**.
+                </p>
+
+                <h4 class="fw-bold fs-5 text-ph-gold">Sunday Schedule</h4>
+                <p class="mb-4" style="color: var(--ph-black);">
+                    Pickups available from **08:00AM – 12:00PM** for **additional $20 fee**. No drop offs.
+                </p>
+                
+                <p class="small text-muted fst-italic">
+                    Boarding disclaimer for pickups from 5pm – 7pm: Prior arrangements must be made with the front desk and pre-payment must be made.
+                </p>
+
+            </div>
+            
+        </div>
+    </div>
+</section>
 
     <section class="section-padding bg-ph-cream" id="suites">
         <div class="container">
@@ -171,17 +244,17 @@
             <h2 class="mb-4 text-ph-gold fw-bold">Secure Your Boarding Dates</h2>
             <p class="mb-4">Enter your planned stay dates to check suite availability and pricing.</p>
             
-            <form class="row justify-content-center g-3">
+            <form onsubmit="boardTime(event)" class="row justify-content-center g-3">
                 <div class="col-md-3">
-                    <label class="form-label visually-hidden">Check-in</label>
+                    <label id="checkIn" class="form-label visually-hidden">Check-in</label>
                     <input type="date" class="form-control" required>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label visually-hidden">Check-out</label>
+                    <label id="checkOut" class="form-label visually-hidden">Check-out</label>
                     <input type="date" class="form-control" required>
                 </div>
                 <div class="col-md-3">
-                    <select class="form-select" required>
+                    <select id="service" class="form-select" required>
                         <option selected disabled>Select Suite Type...</option>
                         <option value="1">Standard Comfort</option>
                         <option value="2">Deluxe Haven</option>
@@ -199,5 +272,6 @@
         </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="boarding.js"></script>
 </body>
 </html>
