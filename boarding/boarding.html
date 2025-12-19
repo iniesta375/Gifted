@@ -111,17 +111,17 @@
                 
                 <h4 class="fw-bold fs-5" style="color: var(--ph-black);">Pickup and Drop Off Times</h4>
                 <p class="mb-4" style="color: var(--ph-black);">
-                    Dogs scheduled to go home, **must be picked up** between the hours of **8:00AM–12:00PM on Monday–Saturday**. If dogs are not picked up by 12:00PM there will be a **$20 late pickup charge** assessed for the 12:00–5:00PM slot. If the dogs are picked up between 5:00–7:00PM that night, an additional **$20.00** late fee will be added to the daycare fee.
+                    Dogs scheduled to go home, <strong>must be picked up</strong> between the hours of <strong>8:00AM–12:00PM on Monday–Saturday</strong>. If dogs are not picked up by 12:00PM there will be a <strong>$20 late pickup charge</strong> assessed for the 12:00–5:00PM slot. If the dogs are picked up between 5:00–7:00PM that night, an additional <strong>$20.00</strong> late fee will be added to the daycare fee.
                 </p>
 
                 <h4 class="fw-bold fs-5" style="color: var(--ph-black);">Drop Offs</h4>
                 <p class="mb-4" style="color: var(--ph-black);">
-                    Boarding dogs arriving have a drop off time between the hours of **12:00–5:00PM Monday–Friday** and **Saturday 12:00–3:00PM**. If your dog needs to be dropped off before 12PM there will be an **early $20 check-in fee**.
+                    Boarding dogs arriving have a drop off time between the hours of <strong>12:00–5:00PM Monday–Friday</strong> and <strong>Saturday 12:00–3:00PM</strong>. If your dog needs to be dropped off before 12PM there will be an <strong>early $20 check-in fee</strong>.
                 </p>
 
                 <h4 class="fw-bold fs-5 text-ph-gold">Sunday Schedule</h4>
                 <p class="mb-4" style="color: var(--ph-black);">
-                    Pickups available from **08:00AM – 12:00PM** for **additional $20 fee**. No drop offs.
+                    Pickups available from <strong>08:00AM – 12:00PM</strong> for <strong>additional $20 fee</strong>. No drop offs.
                 </p>
                 
                 <p class="small text-muted fst-italic">
@@ -245,17 +245,20 @@
             <h2 class="mb-4 text-ph-gold fw-bold">Secure Your Boarding Dates</h2>
             <p class="mb-4">Enter your planned stay dates to check suite availability and pricing.</p>
             
-            <form onsubmit="boardTime(event)" class="row justify-content-center g-3">
+            <form onsubmit="boardSubmit(event)" id="boarding-form" class="row justify-content-center g-3">
                 <div class="col-md-3">
-                    <label id="checkIn" class="form-label visually-hidden">Check-in</label>
-                    <input type="date" class="form-control" required>
+                    <input class="form-control" type="text" id="petInput" placeholder="Pet's Name" required>
                 </div>
                 <div class="col-md-3">
-                    <label id="checkOut" class="form-label visually-hidden">Check-out</label>
-                    <input type="date" class="form-control" required>
+                    <label class="form-label visually-hidden">Check-in</label>
+                    <input id="checkInDate" type="date" class="form-control" required>
                 </div>
                 <div class="col-md-3">
-                    <select id="service" class="form-select" required>
+                    <label class="form-label visually-hidden">Check-out</label>
+                    <input id="checkOutDate" type="date" class="form-control" required>
+                </div>
+                <div class="col-md-3">
+                    <select id="serviceValue" class="form-select" required>
                         <option selected disabled>Select Suite Type...</option>
                         <option value="1">Standard Comfort</option>
                         <option value="2">Deluxe Haven</option>
@@ -273,6 +276,7 @@
         </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="boarding.js"></script>
+    <script type="module" src="boarding.js"></script>
+    <script type="module" src="../script.js"></script>
 </body>
 </html>

@@ -3,6 +3,8 @@ import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  updateProfile
 } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -67,16 +69,30 @@ const signUp = (e) => {
     let regexString = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const confirmEmail = regexString.test(userObj.mail);
     if (confirmEmail) {
-      const found = pawUser.find((user) => user.mail === userObj.mail);
-      if (found) {
-        alert("account already exists");
-      } else {
-        pawUser.push(userObj);
-        localStorage.setItem("pawUsers", JSON.stringify(pawUser));
-        setTimeout(() => {
-          window.location.href = "../sign-in/signIn.html";
-        }, 2000);
-      }
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("passWord").value;
+      const displayName = document.getElementById("fullName").value;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+
+          updateProfile(auth.currentUser, {
+            displayName: displayName,
+          })
+            .then(() => {
+            })
+            .catch((error) => {
+            });
+          // setTimeout(() => {
+          //   window.location.href = "../sign-in/signIn.html";
+          // }, 2000);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+        });
     } else {
       alert("sign up");
     }

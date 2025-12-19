@@ -1,5 +1,5 @@
  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-  import { getAuth, signInWithPopup, GoogleAuthProvider} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+  import { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCx6oPD0bwfxBwsZjWWsHn7MEl26lvkSMI",
@@ -35,46 +35,57 @@
   }
   window.signInGoogle = signInGoogle
 
-const fetched = JSON.parse(localStorage.getItem("pawUsers"));
-console.log(fetched);
+// const fetched = JSON.parse(localStorage.getItem("pawUsers"));
+// console.log(fetched);
 
 
 const signIn = (e) => {
   e.preventDefault();
   if (email.value.trim() === "" || passWord.value.trim() === "") {
-    // showError.style.display = "block";
-    // showError2.style.display = "none";
+    alert('Fill d inputs joor')
   } else {
-    // showError.style.display = "none";
-    const signInObj = {
-      mail: email.value,
-      pass: passWord.value,
-    };
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("passWord").value;
 
-    const found = fetched.find((user) => user.mail === signInObj);
-    if (found) {
-      const justFound = fetched.find
-        (user => user.mail === signInObj && user.pass === signInObj
-      );
-      if (justFound) {
-                console.log('go to dashboard');
-                localStorage.setItem('user', JSON.stringify(signInObj))
-                setTimeout(()=>{
-                    window.location.href = "../dashboard/dashBoard.html";
-                }, 2000)
-            } else {
-                alert("dosen't exist")
+    signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    console.log(user);
+    setTimeout(() => {
+      window.location.href = "../dashboard/dashBoard.html"
+    }, 2000);
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage);
+  });
+}
+
+    // const found = fetched.find((user) => user.mail === signInObj);
+    // if (found) {
+    //   const justFound = fetched.find
+    //     (user => user.mail === signInObj && user.pass === signInObj
+    //   );
+    //   if (justFound) {
+    //             console.log('go to dashboard');
+    //             localStorage.setItem('user', JSON.stringify(signInObj))
+    //             setTimeout(()=>{
+    //                 window.location.href = "../dashboard/dashBoard.html";
+    //             }, 2000)
+    //         } else {
+    //             alert("dosen't exist")
                 // setTimeout(() => {
                 //     showError2.style.display = 'none'
                 // }, 2000)
             }
-    } else {
-                alert("dosen't exist")
+    // } else {
+    //             alert("dosen't exist")
       // showError2.style.display = "block";
       // setTimeout(() => {
         // showError2.style.display = "none";
       // }, 2000);
-    }
-  }
-};
+//     }
+//   }
+// };
 window.signIn = signIn
