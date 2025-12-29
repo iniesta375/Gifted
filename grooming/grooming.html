@@ -50,12 +50,36 @@
     </style>
 </head>
 <body>
-    
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--ph-black);">
-        <div class="container">
-            <a class="navbar-brand text-ph-gold fw-bold" href="../index.html">Gifted Pets</a>
-            </div>
-    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--ph-black) !important;">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="../index.html">Gifted Pets</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="text-white">Menu</span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link text-white" href="../index.html">Home</a></li>
+                
+                <div id="nav-signin-container" class="d-flex">
+                    <li class="nav-item"><a class="nav-link text-white" href="../sign-in/signIn.html">Sign In</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="../sign-up/signUp.html">Sign Up</a></li>
+                </div>
+
+                <div id="nav-dashboard-container" class="d-none">
+                    <li class="nav-item"><a class="nav-link text-white" href="../dashboard/dashboard.html">Dashboard</a></li>
+                </div>
+
+                <li class="nav-item d-none" id="nav-logout-button">
+                    <a class="nav-link text-danger" href="#" onclick="signOuted()">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 
     <header class="py-5 text-center bg-ph-cream">
         <div class="container">

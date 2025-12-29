@@ -47,14 +47,37 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--ph-black);">
-        <div class="container">
-            <a class="navbar-brand text-ph-gold fw-bold" href="../index.html">Gifted Pets</a>
-            </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: var(--ph-black) !important;">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="../index.html">Gifted Pets</a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="text-white">Menu</span>
+        </button>
 
-    <header class="py-5 text-center bg-dark text-white" style="background-image: url('../img/pawpalace_boarding\ \(1\).jpg'); background-size: contain; background-position: center; height: 50vh; display: flex; align-items: center;">
-        <div class="container bg-black bg-opacity-50 p-4 rounded-3">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link text-white" href="../index.html">Home</a></li>
+                
+                <div id="nav-signin-container" class="d-flex">
+                    <li class="nav-item"><a class="nav-link text-white" href="../sign-in/signIn.html">Sign In</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="../sign-up/signUp.html">Sign Up</a></li>
+                </div>
+
+                <div id="nav-dashboard-container" class="d-none">
+                    <li class="nav-item"><a class="nav-link text-white" href="../dashboard/dashboard.html">Dashboard</a></li>
+                </div>
+
+                <li class="nav-item d-none" id="nav-logout-button">
+                    <a class="nav-link text-danger" href="#" onclick="signOuted()">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <header class="py-5 text-center bg-dark text-white" style="background-image: url('../img/pawpalace_boarding\ \(1\).jpg'); background-size: cover; background-position: center; height: 50vh; display: flex; align-items: center;">
+        <div class="container w-100 bg-black bg-opacity-50 p-4 rounded-0 rounded-sm-3">
             <h1 class="display-4 fw-bold text-ph-gold">Your Pet's Home Away From Home</h1>
             <p class="lead mb-4">Luxury boarding suites and constant care from trained staff.</p>
             <a href="#suites" class="btn btn-ph-gold btn-lg">Explore Our Suites</a>
