@@ -26,6 +26,15 @@
     overflow: hidden;
 }
 
+input:focus, 
+textarea:focus, 
+select:focus,
+.form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #ced4da !important; 
+}
+
 .btn-gp-teal:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(49, 144, 142, 0.4);

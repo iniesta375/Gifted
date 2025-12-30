@@ -1,16 +1,14 @@
 :root {
-    /* 🌟 NEW COLOR PALETTE 🌟 */
-    --gold: #2d9596;              /* Deep Teal/Aqua (Accent) */
-    --charcoal: #265073;          /* Deep Navy Blue (Sidebar/Dark) */
-    --dark-gray: #9ad0c2;         /* Softer Aqua (Table Header Background) */
-    --cream: #ecf4d6;             /* Pale Green (Page Background) */
+    --gold: #2d9596;              
+    --charcoal: #265073;          
+    --dark-gray: #9ad0c2;         
+    --cream: #ecf4d6;
 }
 
 body, html {
     height: 100%;
     margin: 0;
     font-family: "Poppins", sans-serif;
-    /* Uses new Pale Green background for safety */
     background-color: var(--cream);
 }
 
@@ -20,14 +18,12 @@ body, html {
 
 .sidebar {
     width: 250px;
-    /* Updated: Uses Deep Navy Blue */
     background: var(--charcoal);
     color: white;
     min-height: 100vh;
 }
 
 .sidebar .nav-link {
-    /* Kept light for readability against Navy background */
     color: #f0f0f0; 
     margin-bottom: 8px;
     padding: 8px 0;
@@ -35,12 +31,10 @@ body, html {
 
 .sidebar .nav-link:hover {
     color: white;
-    /* Optional: Add a subtle highlight to the link background on hover */
     background-color: rgba(45, 149, 150, 0.2); 
 }
 
 .main {
-    /* Updated: Uses Pale Green background */
     background: var(--cream);
     min-height: 100vh;
 }
@@ -48,20 +42,16 @@ body, html {
 .stat-card {
     background: white;
     border: none;
-    /* Updated: Uses Deep Teal/Aqua accent */
     border-left: 4px solid var(--gold);
     border-radius: 6px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
 .table > thead {
-    /* Updated: Uses Softer Aqua for table header background */
     background-color: var(--dark-gray);
-    /* Set text to Navy Blue for contrast */
     color: var(--charcoal); 
 }
 
-/* Animation styles remain unchanged */
 
 @keyframes slideIn {
     from {

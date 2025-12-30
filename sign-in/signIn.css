@@ -18,6 +18,15 @@ body {
     border-radius: 12px;
 }
 
+input:focus, 
+textarea:focus, 
+select:focus,
+.form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #ced4da !important; 
+}
+
 .gold-btn {
     background-color: var(--gold);
     color: white;

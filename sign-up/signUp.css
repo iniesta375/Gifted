@@ -35,6 +35,15 @@ body {
     transition: all 0.3s ease;
 }
 
+input:focus, 
+textarea:focus, 
+select:focus,
+.form-control:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #ced4da !important; 
+}
+
 .gold-btn:hover {
     background-color: var(--ph-gold-light) !important;
     color: var(--ph-black) !important;
