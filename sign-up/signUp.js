@@ -24,7 +24,6 @@ if (localStorage.pawUsers) {
   pawUser = [];
 }
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
@@ -51,50 +50,64 @@ window.signUpGoogle = signUpGoogle;
 
 const signUp = (e) => {
   e.preventDefault();
+  
+  const emailVal = document.getElementById("email").value.trim();
+  const passwordVal = document.getElementById("passWord").value;
+  const displayNameVal = document.getElementById("fullName").value.trim();
+  const userNameVal = document.getElementById("userName").value.trim();
+
   if (
-    fullName.value.trim() === "" ||
-    email.value.trim() === "" ||
-    userName.value.trim() === "" ||
-    passWord.value.trim() === ""
+    displayNameVal === "" ||
+    emailVal === "" ||
+    userNameVal === "" ||
+    passwordVal === ""
   ) {
     alert("fill in all inputs");
-  } else {
-    // alert('fill in all inputs')
+  } 
+  else if (passwordVal.length < 6) {
+    alert("Password must be at least 6 characters long.");
+  }
+  else {
     const userObj = {
-      name: fullName.value,
-      userName: userName.value,
-      mail: email.value,
-      pass: passWord.value,
+      name: displayNameVal,
+      userName: userNameVal,
+      mail: emailVal,
+      pass: passwordVal,
     };
+    
     let regexString = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const confirmEmail = regexString.test(userObj.mail);
+
     if (confirmEmail) {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("passWord").value;
-      const displayName = document.getElementById("fullName").value;
-      createUserWithEmailAndPassword(auth, email, password)
+      createUserWithEmailAndPassword(auth, emailVal, passwordVal)
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
 
           updateProfile(auth.currentUser, {
-            displayName: displayName,
+            displayName: displayNameVal,
           })
-            .then(() => {
-            })
-            .catch((error) => {
-            });
-          // setTimeout(() => {
-          //   window.location.href = "../sign-in/signIn.html";
-          // }, 2000);
+          .then(() => {
+            alert("Account created successfully!");
+            window.location.href = "../sign-in/signIn.html";
+          })
+          .catch((error) => {
+            console.error("Profile update error:", error);
+          });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorMessage);
+          
+          if (errorCode === 'auth/email-already-in-use') {
+             alert("This email is already registered. Please use a different email or sign in.");
+          } else {
+             console.log("Firebase Error:", errorMessage);
+             alert("Error: " + errorMessage);
+          }
         });
     } else {
-      alert("sign up");
+      alert("Please enter a valid email address");
     }
 
     fullName.value = "";
