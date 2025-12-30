@@ -7,13 +7,13 @@
 }
 
 body {
-    background-color: var(--cream);
+    background-color: var(--cream) !important;
     font-family: "Poppins", sans-serif;
     color: var(--text-dark);
 }
 
 .signup-wrapper {
-    background-color: var(--cream);
+    background-color: var(--cream) !important;
 }
 
 .signup-card {
@@ -24,18 +24,18 @@ body {
 }
 
 .gold-btn {
-    background-color: var(--gold);
+    background-color: var(--gold) !important;
     color: white;
     border: none;
     transition: background 0.3s;
 }
 
 .gold-btn:hover {
-    background-color: var(--gold-light);
+    background-color: var(--gold-light) !important;
 }
 
 .gold-text {
-    color: var(--gold);
+    color: var(--gold)!important;
     font-weight: 600;
 }
 
@@ -63,19 +63,19 @@ input:focus {
 .btn-google {
     background-color: white; 
     color: var(--text-dark);
-    border: 1px solid var(--gold-light);
+    border: 1px solid var(--gold-light) !important;
     font-weight: 500;
     transition: all 0.3s ease;
 }
 
 .btn-google:hover {
-    background-color: var(--cream); 
+    background-color: var(--cream) !important; 
     color: var(--text-dark);
     border-color: var(--gold);
     box-shadow: 0 0 5px rgba(45, 149, 150, 0.2);
 }
 
 .btn-google i {
-    color: var(--gold);
+    color: var(--gold) !important;
     font-size: 1.1em;
 }

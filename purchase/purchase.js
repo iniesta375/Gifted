@@ -66,19 +66,22 @@ window.goToCheckout = function(event) {
     const user = auth.currentUser;
     if (!user) {
         alert("Please sign in to complete your adoption.");
-        window.location.href = "../sign-in/signIn.html";
+        window.location.href = "../../sign-in/signIn.html";
         return;
     }
 
     const petId = document.getElementById('pet-id-hidden')?.value;
     const petName = document.getElementById('pet-name-display')?.textContent;
+    const priceEl = document.getElementById('pet-price-hidden');
 
-    if (!petId || !petName) {
+    if (!petId || !petName || !priceEl) {
         alert("Error: Pet information is missing.");
         return;
     }
 
-const checkoutURL = `../checkout.html?petId=${petId}&petName=${encodeURIComponent(petName)}`;
+    const petPrice = priceEl.value;
+
+const checkoutURL = `../checkout.html?petId=${petId}&petName=${encodeURIComponent(petName)}&price=${petPrice}`;
     
     console.log("Navigating to Checkout...");
     window.location.href = checkoutURL;

@@ -19,13 +19,21 @@ const auth = getAuth(app);
 const params = new URLSearchParams(window.location.search);
 const petName = params.get('petName') || "Selected Pet";
 const petId = params.get('petId') || "000";
+const petPrice = params.get('price') || "150.00";
 
 const displayEl = document.getElementById('displayPetName');
 if(displayEl) displayEl.textContent = petName;
 
+const priceDisplay = document.getElementById('displayPetPrice');
+if(priceDisplay) priceDisplay.innerText = `$${petPrice}`;
+
+const totalEl = document.getElementById('displayTotal');
+    if (totalEl) totalEl.innerText = `$${petPrice}`;
+
 window.processManualPayment = async function(e) {
     e.preventDefault();
     const btn = document.getElementById('payBtn');
+    if(payBtn) payBtn.innerHTML = `<i class="bi bi-lock-fill"></i> Pay $${petPrice} Securely`;
     const user = auth.currentUser;
 
     if (!user) {
@@ -49,21 +57,27 @@ window.processManualPayment = async function(e) {
             throw new Error("Declined: Insufficient Funds");
         }
 
-        const purchaseRef = ref(db, `users/${user.uid}bookings`);
-        const newRecordRef = push(purchaseRef);
+        const userBookingsRef = ref(db, `users/${user.uid}/bookings`);
+const newRecordRef = push(userBookingsRef);
         const globalStatusRef = ref(db, `petStatus/${petId}`);
 await set(globalStatusRef, { sold: true, owner: user.uid });
 
-        await set(newRecordRef, {
-            serviceType: 'Purchase',
+        await Promise.all([
+        set(newRecordRef, {
+            serviceType: 'Purchase', // This triggers the card in your dashboard
             petId: petId,
             petName: petName,
-            appointmentDate: new Date().toISOString().split('T')[0],
+            amountPaid: `$${petPrice}`,
             dateBooked: new Date().toISOString(),
-            status: "Completed",
-            amountPaid: "$150.00"
-        });
+            status: "Completed"
+        }),
+        set(globalStatusRef, { 
+            sold: true, 
+            owner: user.uid 
+        })
+    ]);
 
+    console.log("Purchase successful!");
         showSuccessUI();
 
     } catch (error) {
@@ -82,7 +96,7 @@ function showSuccessUI() {
             particleCount: 150,
             spread: 70,
             origin: { y: 0.6 },
-            colors: ['#31908e', '#FFD700', '#ffffff'] // Matches your Teal and Gold theme
+            colors: ['#31908e', '#FFD700', '#ffffff'] 
         });
     }
     document.body.innerHTML = `

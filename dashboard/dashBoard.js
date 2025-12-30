@@ -24,137 +24,150 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
-let uid;
+
+window.generateReceipt = function(name, price, date) {
+    const receiptWindow = window.open('', '_blank');
+    if (!receiptWindow) return alert("Please allow popups to view receipt");
+
+    const container = receiptWindow.document.createElement('div');
+    container.style.fontFamily = 'sans-serif';
+    container.style.padding = '40px';
+    container.style.textAlign = 'center';
+    container.style.border = '2px solid #eee';
+    container.style.maxWidth = '500px';
+    container.style.margin = 'auto';
+
+    container.innerHTML = `
+        <h1 style="color: #265073;">Gifted Pets</h1>
+        <p style="color: #666;">Official Adoption Receipt</p>
+        <hr style="border: 0; border-top: 1px solid #eee;">
+        <div style="text-align: left; margin-top: 20px;">
+            <p><strong>Pet Name:</strong> ${name}</p>
+            <p><strong>Amount Paid:</strong> ${price}</p>
+            <p><strong>Date:</strong> ${date}</p>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #eee;">
+        <p style="font-size: 12px; color: #999;">Thank you for your adoption!</p>
+    `;
+
+    receiptWindow.document.body.appendChild(container);
+    
+    setTimeout(() => {
+        receiptWindow.print();
+        receiptWindow.close();
+    }, 500);
+};
 
 window.signOuted = function () {
-  signOut(auth)
-    .then(function () {
-      alert("You have been signed out. Redirecting to home.");
+  signOut(auth).then(() => {
       window.location.href = "../index.html";
-    })
-    .catch(function (error) {
-      console.error("Logout Error:", error);
-      alert("Logout failed. Please try again.");
+  });
+};
+
+const displayUserBookings = (activeUid) => {
+  const serviceTable = document.getElementById("show3");
+  const adoptionContainer = document.getElementById("adoption-cards-container");
+  
+  if (!serviceTable || !adoptionContainer) return;
+
+  const bookingsRef = ref(db, `users/${activeUid}/bookings`);
+
+  onValue(bookingsRef, (snapshot) => {
+    serviceTable.innerHTML = "";
+    adoptionContainer.innerHTML = "";
+
+    if (!snapshot.exists()) {
+      serviceTable.innerHTML = '<tr><td colspan="5" class="text-center py-4">No services found.</td></tr>';
+      adoptionContainer.innerHTML = '<div class="col-12 text-center text-muted">No pets adopted yet.</div>';
+      return;
+    }
+
+    const data = snapshot.val();
+    let hasServices = false;
+    let hasAdoptions = false;
+
+    Object.keys(data).forEach((key) => {
+      const item = data[key];
+      const type = (item.serviceType || "").trim().toLowerCase();
+
+      if (type === "purchase" || type === "adoption") {
+        hasAdoptions = true;
+        const date = item.dateBooked ? new Date(item.dateBooked).toLocaleDateString() : "N/A";
+        
+       const cardHtml = `
+  <div class="col-md-6 col-lg-4 mb-3">
+    <div class="card border-0 shadow-sm h-100" style="border-radius: 12px;">
+      <div class="card-body p-4">
+        <div class="d-flex justify-content-between mb-2">
+          <h5 class="fw-bold m-0">${item.petName || 'Pet'}</h5>
+          <span class="badge bg-success rounded-pill">Adopted</span>
+        </div>
+        <p class="text-muted small mb-4">${date}</p>
+        <div class="d-flex justify-content-between align-items-center mt-auto">
+          <span class="fw-bold text-primary">${item.amountPaid || 'Paid'}</span>
+          
+          <button class="btn btn-sm btn-outline-primary receipt-trigger-btn" 
+            data-name="${item.petName}" 
+            data-price="${item.amountPaid}" 
+            data-date="${date}">
+            Receipt
+          </button>
+          
+        </div>
+      </div>
+    </div>
+  </div>`;
+
+adoptionContainer.insertAdjacentHTML('beforeend', cardHtml);
+      } 
+      else {
+        hasServices = true;
+        const sDate = item.appointmentDate ? new Date(item.appointmentDate + "T00:00:00").toLocaleDateString() : "N/A";
+        const row = `
+          <tr>
+            <td>${item.serviceType}</td>
+            <td>${sDate}</td>
+            <td>${item.petName || "N/A"}</td>
+            <td><span class="badge ${item.status === 'Confirmed' ? 'bg-success' : 'bg-warning text-dark'}">${item.status}</span></td>
+            <td><button class="btn btn-sm btn-outline-danger" onclick="deleteItem('${key}')">Delete</button></td>
+          </tr>`;
+        serviceTable.insertAdjacentHTML('beforeend', row);
+      }
     });
-};
-
-window.overView = function () {
-  window.location.reload();
-};
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    uid = user.uid;
-  } else {
-    alert("you are not logged in");
-    window.location.href = "../sign-in/signIn.html";
-  }
+    const receiptButtons = document.querySelectorAll('.receipt-trigger-btn');
+receiptButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const name = e.target.getAttribute('data-name');
+        const price = e.target.getAttribute('data-price');
+        const dateStr = e.target.getAttribute('data-date');
+        
+        window.generateReceipt(name, price, dateStr);
+    });
 });
 
-const displayUserBookings = (uid, serviceTable) => {
-  serviceTable.innerHTML =
-    '<tr><td colspan="5" class="text-center py-4 text-ph-gold">Fetching your bookings...</td></tr>';
+    if (!hasServices) serviceTable.innerHTML = '<tr><td colspan="5" class="text-center">No service bookings.</td></tr>';
+    if (!hasAdoptions) adoptionContainer.innerHTML = '<div class="col-12 text-center text-muted">No pets adopted yet.</div>';
+  });
 
-  const bookingsRef = ref(db, `users/${uid}/bookings`);
-
-  onValue(
-    bookingsRef,
-    (snapshot) => {
-      serviceTable.innerHTML = "";
-
-      if (!snapshot.exists()) {
-        serviceTable.innerHTML =
-          '<tr><td colspan="5" class="text-center py-4">You have no upcoming service bookings.</td></tr>';
-        return;
-      }
-
-      let hasServiceBookings = false;
-      const data = snapshot.val();
-
-      Object.keys(data).forEach((key) => {
-        const booking = data[key];
-
-        if (booking.serviceType !== "Purchase") {
-          hasServiceBookings = true;
-
-          const rawDate = new Date(booking.appointmentDate + "T00:00:00");
-          const displayDate = rawDate.toLocaleDateString();
-
-          let statusClass =
-            booking.status === "Confirmed"
-              ? "bg-success"
-              : booking.status === "Pending"
-              ? "bg-warning text-dark"
-              : "bg-secondary";
-
-          const row = serviceTable.insertRow();
-          row.innerHTML = `
-                    <td>${booking.serviceType}</td>
-                    <td>${displayDate}</td>
-                    <td>${booking.petName || "N/A"}</td>
-                    <td><span class="badge ${statusClass}">${
-            booking.status
-          }</span></td>
-                    <td><button class="btn btn-sm btn-outline-danger" onclick="deleteBooking('${key}')">Delete</button></td>
-                `;
-        }
-      });
-
-      window.deleteBooking = function (bookingKey) {
-        if (!confirm("Are you sure you want to delete this booking?")) return;
-
-        console.log(bookingKey);
-
-        const user = auth.currentUser;
-
-        if (user) {
-          const bookingPath = `users/${user.uid}/bookings/${bookingKey}`;
-          const bookingRef = ref(db, bookingPath);
-
-          remove(bookingRef)
-            .then(() => {
-              alert("Booking deleted successfully!");
-            })
-            .catch((error) => {
-              console.error("Delete failed:", error);
-              alert("Error deleting booking.");
-            });
-        }
-      };
-
-      if (!hasServiceBookings) {
-        serviceTable.innerHTML =
-          '<tr><td colspan="5" class="text-center py-4">You have no upcoming service bookings.</td></tr>';
-      }
-    },
-    (error) => {
-      console.error("RTDB Error:", error);
-      serviceTable.innerHTML =
-        '<tr><td colspan="5" class="text-center text-danger py-4">Error loading bookings. Check network.</td></tr>';
+  window.deleteItem = function(key) {
+    if (confirm("Delete this entry?")) {
+      remove(ref(db, `users/${activeUid}/bookings/${key}`));
     }
-  );
+  };
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  const showUserName = document.getElementById("show");
-  const showMobileUserName = document.getElementById("show2");
-  const tableBodyServices = document.getElementById("show3");
-
+document.addEventListener("DOMContentLoaded", () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      const userNameToDisplay =
-        user.displayName ||
-        (user.email
-          ? user.email.substring(0, user.email.indexOf("@"))
-          : "User");
+      const name = user.displayName || user.email.split('@')[0];
+      const welcome = document.getElementById("show");
+      const welcomeMob = document.getElementById("show2");
+      if (welcome) welcome.textContent = `Welcome, ${name}!`;
+      if (welcomeMob) welcomeMob.textContent = `Welcome, ${name}!`;
 
-      showUserName.textContent = `Welcome, ${userNameToDisplay}!`;
-      showMobileUserName.textContent = `Welcome, ${userNameToDisplay}!`;
-
-      displayUserBookings(user.uid, tableBodyServices);
-      // updateSummaryCards(user.uid);
+      displayUserBookings(user.uid);
     } else {
-      window.location.href = "../index.html";
+      window.location.href = "../sign-in/signIn.html";
     }
   });
 });
