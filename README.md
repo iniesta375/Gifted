@@ -30,6 +30,5 @@ The application follows a modular architecture:
 
 ## Getting Started
 
-1. Clone the repository: `git clone https://github.com/yourusername/gifted-pets.git`
-2. Open `index.html` in your browser (use Live Server in VS Code for best results).
-3. Ensure your Firebase configuration is correctly set in the script files.
+1. repository: `https://github.com/iniesta375/Gifted.git`
+2. live server: `gifted-sand.vercel.app`
