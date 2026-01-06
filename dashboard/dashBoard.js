@@ -64,6 +64,10 @@ window.signOuted = function () {
   });
 };
 
+window.overView = function () {
+  window.location.href = "./dashBoard.html"
+}
+
 const displayUserBookings = (activeUid) => {
   const serviceTable = document.getElementById("show3");
   const adoptionContainer = document.getElementById("adoption-cards-container");
